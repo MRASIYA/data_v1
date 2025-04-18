@@ -50,11 +50,15 @@
                     console.log('Success:', result);
                     alert(result.message || 'Form submitted successfully!'); // Display success message
                 } else {
+                    // Log the response error details
+                    const errorDetails = await response.text();
                     console.error('Failed to submit:', response.statusText);
+                    console.error('Response Error:', errorDetails);
                     alert('Failed to submit form. Please try again later.');
                 }
             } catch (error) {
-                console.error('Error:', error);
+                // Log any network or fetch errors
+                console.error('Error during fetch request:', error);
                 alert('An error occurred while submitting the form.');
             }
         });
